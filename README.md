@@ -137,7 +137,7 @@ use in routes:
 
 ```
 
-###Named Routes for Reverse Routing
+### Named Routes for Reverse Routing
 
 Pass in an array as the first argument, where the first item is your route and the second item is a name with which to reference it later.
 
@@ -159,7 +159,7 @@ $router->route('page', ['intro', 456]);
 
 ```
 
-###Filters
+### Filters
 
 ```php
 
@@ -176,7 +176,7 @@ $router->get('/user/{name}', function($name){
 }, ['before' => 'statsStart', 'after' => 'statsComplete']);
 ```
 
-###Filter Groups
+### Filter Groups
 
 Wrap multiple routes in a route group to apply that filter to every route defined within. You can nest route groups if required.
 
@@ -203,7 +203,8 @@ $router->group(['before' => 'auth'], function($router){
     
 });
 ```
-###Prefix Groups
+
+### Prefix Groups
 
 ```php
 
@@ -225,7 +226,7 @@ $router->group(['prefix' => 'admin'], function($router){
 });
 ```
 
-###Controllers
+### Controllers
 
 ```php
 namespace MyApp;
@@ -279,8 +280,10 @@ A URI is dispatched by calling the `dispatch()` method of the created dispatcher
 accepts the HTTP method and a URI. Getting those two bits of information (and normalizing them
 appropriately) is your job - this library is not bound to the PHP web SAPIs.
 
+~~~PHP
 $response = (new Phroute\Phroute\Dispatcher($router))
             ->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+~~~
 
 The `dispatch()` method will call the matched route, or if no matches, throw one of the exceptions below:
 
@@ -378,7 +381,7 @@ Performed on a machine with :
  * Processor  2.3 GHz Intel Core i7
  * Memory  8 GB 1600 MHz DDR3
 
-####Phroute
+#### Phroute
 
 This test is to illustrate, in part, the efficiency of the lightweight routing-core, but mostly the lack of degradation of matching speed as the number of routes grows, as compared to conventional libraries.
 
@@ -486,7 +489,7 @@ Percentage of the requests served within a certain time (ms)
  100%    478 (longest request)
 ~~~
 
-###For comparison, Laravel 4.0 routing core
+### For comparison, Laravel 4.0 routing core
 
 Please note, this is no slight against laravel - it is based on a routing loop, which is why the performance worsens as the number of routes grows
 
